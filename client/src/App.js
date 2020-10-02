@@ -1,10 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-// import './App.css';
-import Login from './components/pages/Login';
-import Register from './components/pages/Register';
-import NotFound from './components/pages/NotFound';
+import Login from './components/Login/Login';
 
 function App() {
   return (
@@ -12,9 +9,6 @@ function App() {
       <Router>
         <Switch>
           <Route exact path='/login' component={Login} />
-          <Route exact path='/register' component={Register} />
-
-          <Route component={NotFound}></Route>
         </Switch>
       </Router>
     </div>
