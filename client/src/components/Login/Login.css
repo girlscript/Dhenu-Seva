@@ -1,0 +1,8 @@
+.authentication-bg {
+  background-image: url(../../static/authentication-background.jpg);
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  vertical-align: bottom;
+  min-height: 100vh;
+}
