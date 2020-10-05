@@ -1,0 +1,9 @@
+ body{
+    background-image: url('background_image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.bot {
+    font-size: 1rem;
+    font-weight: 400;
+  }
