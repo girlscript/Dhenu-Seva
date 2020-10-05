@@ -35,3 +35,34 @@ exports.signup = (req, res, next) => {
       console.log(err)
     });
 };
+
+exports.login = (req, res, next) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  let enteredUser;
+
+  User.findOne({ email: email })
+    .then(user => {
+      if (!user) {
+        const error = new Error('Enter valid credentials.');
+        throw error;
+      }
+      enteredUser = user;
+
+      return bcrypt.compare(password, user.password);
+    })
+    .then(isEqual => {
+      if (!isEqual) {
+        const error = new Error('Wrong password!');
+        throw error;
+      }
+    // adding token 
+      res.status(200).json({
+        userId: enteredUser._id.toString() 
+      });
+    })
+    .catch(err => {
+      console.log(err)
+    });
+};

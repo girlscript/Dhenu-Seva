@@ -8,4 +8,9 @@ router.put(
   authController.signup
 );
 
+router.put(
+  '/login',
+  authController.login
+);
+
 module.exports = router;
