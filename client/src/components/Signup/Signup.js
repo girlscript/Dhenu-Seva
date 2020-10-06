@@ -97,6 +97,7 @@ export default class Signup extends Component {
 
   render() {
     return (
+      <div className='authentication-bg'>
       <div className="container">
         <div className="card-body ">
           <div className="text-center">
@@ -168,6 +169,7 @@ export default class Signup extends Component {
           <div className="text-center"><Link className="small text-dark bot" to="/login">Already have an account? Login!</Link></div>
         </div>
         <Footer />
+      </div>
       </div>
     )
   }
