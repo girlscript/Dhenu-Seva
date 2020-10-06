@@ -8,7 +8,7 @@ router.put(
   authController.signup
 );
 
-router.put(
+router.post(
   '/login',
   authController.login
 );
