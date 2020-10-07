@@ -11,9 +11,9 @@ const postSchema = new Schema({
     required: true,
     unique: true,
   },
-  gender : {
+  gender: {
     type: String,
-    enum: ["male", "female" , "other"],
+    enum: ["male", "female", "other"],
     required: true
   },
   qualification: {
@@ -54,14 +54,17 @@ const postSchema = new Schema({
   },
   pin_code: {
     type: Number,
-    required: true 
+    required: true
   },
-
+  website: {
+    type: String
+  },
+  
   // the creator
   creator: {
     type: Schema.Types.ObjectId,
-    ref:'User',
-    required: true 
+    ref: 'User',
+    required: true
   }
 },
   {
