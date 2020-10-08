@@ -6,8 +6,10 @@ const app = express();
 
 app.use(bodyParser.json());
 
-const MONGO_URL = 'mongodb+srv://..'
-const portNumber = process.env.PORT || 8080;
+const config = require('./config.json')
+
+const MONGO_URL = config.databaseURL;
+const portNumber = process.env.PORT || config.port;
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
