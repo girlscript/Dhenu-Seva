@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const header = require('./middlewares/header')
 const app = express();
 
 app.use(bodyParser.json());
@@ -11,14 +12,9 @@ const config = require('./config.json')
 const MONGO_URL = config.databaseURL;
 const portNumber = process.env.PORT || config.port;
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    next();
-});
+app.use(header);
 
-require('./routes/routes');
+require('./routes/routes')(app);
 
 mongoose
   .connect(

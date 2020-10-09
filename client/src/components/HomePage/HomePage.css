@@ -1,0 +1,26 @@
+.banner_title{
+    font-size: 50px;
+    text-align: center;
+    background-color: grey;
+    margin-bottom: 0px;
+    font-family: 'Crimson Text', serif;
+}
+img{
+    width: 100vw;
+    height: 550px;
+}
+.card_container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+@media only screen and (max-width: 600px) {
+    .banner_title{
+        font-size: 30px;
+    }
+   img{
+       height: 250px;
+   }
+  }
+

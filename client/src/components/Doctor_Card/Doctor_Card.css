@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&family=Noto+Serif&display=swap');
+.card{
+    width: 400px;
+    margin: 40px;
+    box-shadow: 5px 5px 5px #aaaaaa;
+}
+.name{
+    font-family: 'Noto Serif', serif;
+    
+}
+.address,.gender,.contact,.fees,.timing{
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 600px) {
+    .card{
+        width: 90%;
+        margin: 10px auto;  
+    }
+  }
