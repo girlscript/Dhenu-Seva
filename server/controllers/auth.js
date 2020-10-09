@@ -8,9 +8,17 @@ exports.signup = (req, res, next) => {
   const name = req.body.name;
   const password = req.body.password;
   
-  bcrypt
-     .hash(password , configAuth.passwordEncryptionKeyLength)
-     .then(hashedPassword => {
+  User.findOne({ 
+    email: email
+   })
+  .then(savedUser => {
+    if (savedUser) {
+      const error = new Error('User already exists. Please enter a new email');
+      throw error;
+    }
+    return  bcrypt.hash(password , configAuth.passwordEncryptionKeyLength)
+  })
+    .then(hashedPassword => {
        const user = new User ({
         email: email,
         password: hashedPassword,
