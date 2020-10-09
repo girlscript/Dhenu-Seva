@@ -1,21 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const header = require('./middlewares/header')
-const authRoutes = require('./routes/auth');
-const feedRoutes = require('./routes/feed');
 
+const header = require('./middlewares/header')
 const app = express();
 
 app.use(bodyParser.json());
 
-const MONGO_URL = 'mongodb+srv://..'
-const portNumber = process.env.PORT || 8080;
+const config = require('./config.json')
+
+const MONGO_URL = config.databaseURL;
+const portNumber = process.env.PORT || config.port;
 
 app.use(header);
 
-app.use('/feed', feedRoutes);
-app.use('/auth', authRoutes);
+require('./routes/routes')(app);
 
 mongoose
   .connect(

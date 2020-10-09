@@ -1,0 +1,8 @@
+{
+    "databaseURL": "mongodb+srv://..",
+    "port": 8080,
+    "auth" : {
+        "passwordEncryptionKeyLength": 12,
+        "secretKey": "somesupersupersecret"
+    }
+}

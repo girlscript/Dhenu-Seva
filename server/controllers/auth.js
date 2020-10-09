@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const configAuth = require('../config.json').auth;
 
 exports.signup = (req, res, next) => {
   const email = req.body.email;
@@ -8,7 +9,7 @@ exports.signup = (req, res, next) => {
   const password = req.body.password;
   
   bcrypt
-     .hash(password , 12)
+     .hash(password , configAuth.passwordEncryptionKeyLength)
      .then(hashedPassword => {
        const user = new User ({
         email: email,
@@ -57,7 +58,7 @@ exports.login = (req, res, next) => {
           userId: enteredUser._id.toString()
         },
         // the secret key
-        'somesupersupersecret',
+        configAuth.secretKey,
         { expiresIn: '1h' }
       );
       res.status(200).json({ 
