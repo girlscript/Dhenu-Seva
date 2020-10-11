@@ -30,5 +30,12 @@ router.put(
     '/post/:postId',
     feedController.updatePost
 );
+
+ // ** delete method to delete individual doctor detail ** // 
+
+router.delete(
+    '/post/:postId',
+     feedController.deletePost
+);
   
 module.exports = router;

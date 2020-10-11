@@ -140,3 +140,40 @@ exports.getPosts = (req, res, next) => {
         console.log(err)
       });
   };
+
+// delete post for doctor //
+
+  exports.deletePost = (req, res, next) => {
+    const postId = req.params.postId;
+    Post.findById(postId)
+      .then(post => {
+        if (!post) {
+          const error = new Error('Could not find post.');
+          throw error;
+        }
+
+          // only the creator is allowed to delete
+
+        if (post.creator.toString() !== req.userId) {
+          const error = new Error('Not authorized!');
+          throw error;
+        }
+
+        return Post.findByIdAndRemove(postId);
+      })
+      .then(result => {
+        return User.findById(req.userId);
+      })
+      .then(user => {
+        user.posts.pull(postId);
+        return user.save();
+      })
+      .then(result => {
+        res.status(200).json({ 
+          message: 'Deleted post successfully.' 
+        });
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  };
