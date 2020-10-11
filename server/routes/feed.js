@@ -16,5 +16,19 @@ router.post(
     '/post',
     feedController.createPost
   );
+
+// ** get method to fetch individual doctor detail ** // 
+
+router.get(
+    '/post/:postId',
+    feedController.getPost
+ );
+
+ // ** put method to update individual doctor detail ** // 
+
+router.put(
+    '/post/:postId',
+    feedController.updatePost
+);
   
 module.exports = router;
