@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Footer from '../Footer/Footer';
-import FeedbackModal from '../util/FeedbackModal';
-import FeedbackAlert from '../util/FeedbackAlert';
-import { validateEmptyFields, validateInput, validateForm } from '../util/Validation.js';
+import Footer from '../../components/Footer/Footer';
+import FeedbackModal from '../../util/FeedbackModal';
+import FeedbackAlert from '../../util/FeedbackAlert';
+import { validateEmptyFields, validateInput, validateForm } from '../../util/Validation.js';
 import './Signup.css'
 
 export default class Signup extends Component {
@@ -97,7 +97,7 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <div className='authentication-bg'>
+      <div className='authentication-bg' style={{backgroundImage: `url('${process.env.PUBLIC_URL}/images/authentication-background.jpg')`}}>
       <div className="container">
         <div className="card-body ">
           <div className="text-center">

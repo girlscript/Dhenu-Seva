@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import FeedbackAlert from '../util/FeedbackAlert';
-import FeedbackModal from '../util/FeedbackModal';
-import Footer from '../Footer/Footer';
+import FeedbackAlert from '../../util/FeedbackAlert';
+import FeedbackModal from '../../util/FeedbackModal';
+import Footer from '../../components/Footer/Footer';
 import {
   validateEmptyFields,
   validateInput,
   validateForm,
-} from '../util/Validation.js';
+} from '../../util/Validation.js';
 
 import './Login.css';
 
@@ -69,7 +69,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className='authentication-bg'>
+      <div className='authentication-bg' style={{backgroundImage: `url('${process.env.PUBLIC_URL}/images/authentication-background.jpg')`}}>
         <div className='bg-gradient-primary'>
           <div className='container'>
             <div className='row justify-content-center'>

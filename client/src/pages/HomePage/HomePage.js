@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './HomePage.css'
-import Doctor_Card from '../Doctor_Card/Doctor_Card';
-import image from '../../banner_img.jpg';
+import Doctor_Card from '../../components/Doctor_Card/Doctor_Card';
 
 export default class HomePage extends Component {
     state = {
@@ -18,7 +17,7 @@ export default class HomePage extends Component {
         return (
             <div>
                 <h1 className="banner_title">Book Doctor</h1>
-                <img src={image} />
+                <img src={process.env.PUBLIC_URL + "/images/banner_img.jpg"} />
                 <div className="card_container">
                     {
                         this.state.posts.map(post =><Doctor_Card post={post}/>)
