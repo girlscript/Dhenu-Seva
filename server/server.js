@@ -18,7 +18,10 @@ require('./routes/routes')(app);
 
 mongoose
   .connect(
-    MONGO_URL
+    MONGO_URL,{
+      useNewUrlParser: true ,
+      useUnifiedTopology:true
+    }
   )
   .then(result => {
     app.listen(portNumber);

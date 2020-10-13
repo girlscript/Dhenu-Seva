@@ -10,7 +10,8 @@ exports.signup = async (req, res, next) => {
     if (savedUser) {
       const error = new Error('User already exists. Please enter a new email');
       throw error;
-    }
+      
+      }
     let hashedPassword = await bcrypt.hash(password, configAuth.passwordEncryptionKeyLength)
     const user = new User({
       email,
@@ -25,7 +26,7 @@ exports.signup = async (req, res, next) => {
     })
   }
   catch (error) {
-    console.log(error)
+    return res.status(422).json({error:"user with that email already exists"})
   }
 }
 
