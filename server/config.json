@@ -1,6 +1,6 @@
 {
-    "databaseURL": "mongodb+srv://shrushti:vishakha72@cluster0.walvd.mongodb.net/<dbname>?retryWrites=true&w=majority",
-    "port": 5000,
+    "databaseURL": "mongodb+srv://..",
+    "port": 8080,
     "auth" : {
         "passwordEncryptionKeyLength": 12,
         "secretKey": "somesupersupersecret"
