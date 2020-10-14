@@ -26,7 +26,9 @@ exports.signup = async (req, res, next) => {
     })
   }
   catch (error) {
-    return res.status(422).json({error:"user with that email already exists"})
+    console.log(error)
+    return res.status(422).json({error})
+   
   }
 }
 
