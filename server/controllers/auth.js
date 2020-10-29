@@ -65,5 +65,6 @@ exports.login = async (req, res, next) => {
 
   catch (error) {
     console.log(error)
+    return res.status(422).json({error:"Enter valid credentials"})
   }
 }

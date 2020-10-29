@@ -17,6 +17,7 @@ class Login extends Component {
     password: '',
     isRememberMeSelected: false,
     isOpen: false,
+    check: true,
     errors: {
       email: '',
       password: '',
@@ -39,10 +40,32 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const { history } = this.props;
     let errors = this.state.errors;
     errors = validateEmptyFields(this.state, errors);
     this.setState({ errors });
     this.setState({ isOpen: true });
+    fetch("http://localhost:8080/auth/login", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        password: this.state.password,
+        email: this.state.email
+      })
+    }).then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if (data.error) {
+          this.setState({ check: false })
+        }
+        else {
+          localStorage.setItem("jwt", data.token)
+          localStorage.setItem("userId", JSON.stringify(data.userId))
+          history.push('/')
+        }
+      }).catch(err => {
+        console.log(err)
+      })
   };
 
   toggleModal = () => {
@@ -52,7 +75,14 @@ class Login extends Component {
   };
 
   FormSubmissionModal = () => {
-    if (validateForm(this.state.errors)) {
+    if (this.state.check === false) {
+      return (
+        <FeedbackModal isOpen={this.state.isOpen} onClose={this.toggleModal}>
+          Enter valid credentials
+        </FeedbackModal>
+      );
+    }
+    else if (validateForm(this.state.errors)) {
       return (
         <FeedbackModal isOpen={this.state.isOpen} onClose={this.toggleModal}>
           Form submitted successfully!
@@ -69,7 +99,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className='authentication-bg' style={{backgroundImage: `url('${process.env.PUBLIC_URL}/images/authentication-background.jpg')`}}>
+      <div className='authentication-bg' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/images/authentication-background.jpg')` }}>
         <div className='bg-gradient-primary'>
           <div className='container'>
             <div className='row justify-content-center'>
