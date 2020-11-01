@@ -10,7 +10,7 @@ class HomePage extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:5000/getposts')
+        fetch('http://localhost:8080/getposts')
             .then(res => res.json())
             .then(data => this.setState({ posts: data }))
     }
