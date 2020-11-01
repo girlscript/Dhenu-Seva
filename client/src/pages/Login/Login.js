@@ -8,8 +8,9 @@ import {
   validateInput,
   validateForm,
 } from '../../util/Validation.js';
-
 import './Login.css';
+import { connect } from 'react-redux';
+import { setCurrentUser } from '../../redux/user/action';
 
 class Login extends Component {
   state = {
@@ -61,6 +62,7 @@ class Login extends Component {
         else {
           localStorage.setItem("jwt", data.token)
           localStorage.setItem("userId", JSON.stringify(data.userId))
+          this.props.setCurrentUser(data.userId)
           history.push('/')
         }
       }).catch(err => {
@@ -220,4 +222,9 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps=dispatch=>({
+  setCurrentUser:user=>dispatch(setCurrentUser(user))
+});
+
+export default connect(null,mapDispatchToProps)(Login);
+

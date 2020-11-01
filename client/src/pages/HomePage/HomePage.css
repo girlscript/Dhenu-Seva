@@ -15,6 +15,12 @@ img{
     justify-content: center;
     align-items: center;
 }
+.logout_button{
+    margin-left: 700px;
+}
+.profile{
+    margin-left: 20px;
+}
 @media only screen and (max-width: 600px) {
     .banner_title{
         font-size: 30px;
