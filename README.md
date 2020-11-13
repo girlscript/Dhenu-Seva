@@ -7,7 +7,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/girlscript/Dhenu-Seva)
 
 
-A website basically for cattles Health. Where veterinary doctors can register themselves and farmers will book or call a doctor for a checkup of their cattle.
+A website basically for cattle's Health. Where veterinary doctors can register themselves and farmers will book or call a doctor for a checkup of their cattle.
 
 ## Tech stack
 Front end | Back end
@@ -17,6 +17,12 @@ CSS | Express
 JavaScript | MongoDB
 React |
 Redux |
+
+## Installation
+1.Fork and clone the project in your local machine.
+2.Execute 'npm install' command to install all the dependencies.
+3.You are good to go.
+
 
 ## Contributing to Dhenu-Seva
 
