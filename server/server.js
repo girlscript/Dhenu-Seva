@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const header = require('./middlewares/header')
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 
 const config = require('./config.json')
